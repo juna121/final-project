@@ -1,0 +1,51 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Workout #<%= @workout.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/workouts" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/workouts/<%= @workout.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit workout
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_workout/<%= @workout.id %>" class="btn btn-block btn-outline-secondary">
+          Delete workout
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @workout.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@workout.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@workout.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

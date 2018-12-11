@@ -1,0 +1,34 @@
+<% if @workout.errors.any? %>
+  <% @workout.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit workout #<%= @workout.id %>
+</h1>
+
+<hr>
+
+<form action="/update_workout/<%= @workout.id %>" method="post">
+
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @workout.user_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update workout
+  </button>
+</form>
+
+<hr>
+
+<a href="/workouts">
+  Go back
+</a>

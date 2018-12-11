@@ -1,0 +1,42 @@
+<% if @exercise.errors.any? %>
+  <% @exercise.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit exercise #<%= @exercise.id %>
+</h1>
+
+<hr>
+
+<form action="/update_exercise/<%= @exercise.id %>" method="post">
+
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control" value="<%= @exercise.name %>">
+  </div>
+
+  <div class="form-group">
+    <label for="bodypart_id">
+      Bodypart
+    </label>
+
+    <input type="text" id="bodypart_id" name="bodypart_id" class="form-control" value="<%= @exercise.bodypart_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update exercise
+  </button>
+</form>
+
+<hr>
+
+<a href="/exercises">
+  Go back
+</a>

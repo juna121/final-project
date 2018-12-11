@@ -1,0 +1,93 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Circuit #<%= @circuit.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/circuits" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/circuits/<%= @circuit.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit circuit
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_circuit/<%= @circuit.id %>" class="btn btn-block btn-outline-secondary">
+          Delete circuit
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Workout
+      </dt>
+      <dd>
+        <%= @circuit.workout_id %>
+      </dd>
+
+      <dt>
+        Exercise
+      </dt>
+      <dd>
+        <%= @circuit.exercise_id %>
+      </dd>
+
+      <dt>
+        Reps
+      </dt>
+      <dd>
+        <%= @circuit.reps %>
+      </dd>
+
+      <dt>
+        Sets
+      </dt>
+      <dd>
+        <%= @circuit.sets %>
+      </dd>
+
+      <dt>
+        Weight
+      </dt>
+      <dd>
+        <%= @circuit.weight %>
+      </dd>
+
+      <dt>
+        Unit
+      </dt>
+      <dd>
+        <%= @circuit.unit %>
+      </dd>
+
+      <dt>
+        Note
+      </dt>
+      <dd>
+        <%= @circuit.note %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@circuit.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@circuit.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+

@@ -1,0 +1,114 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All circuits
+    </h1>
+
+    <a href="/circuits/new" class="btn btn-block btn-outline-secondary">
+      Add a new circuit
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Workout
+        </th>
+
+        <th>
+          Exercise
+        </th>
+
+        <th>
+          Reps
+        </th>
+
+        <th>
+          Sets
+        </th>
+
+        <th>
+          Weight
+        </th>
+
+        <th>
+          Unit
+        </th>
+
+        <th>
+          Note
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @circuits.each do |circuit| %>
+      <tr>
+        <td>
+          <%= circuit.id %>
+        </td>
+
+        <td>
+          <%= circuit.workout_id %>
+        </td>
+
+        <td>
+          <%= circuit.exercise_id %>
+        </td>
+
+        <td>
+          <%= circuit.reps %>
+        </td>
+
+        <td>
+          <%= circuit.sets %>
+        </td>
+
+        <td>
+          <%= circuit.weight %>
+        </td>
+
+        <td>
+          <%= circuit.unit %>
+        </td>
+
+        <td>
+          <%= circuit.note %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(circuit.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(circuit.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/circuits/<%= circuit.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

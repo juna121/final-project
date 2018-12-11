@@ -1,0 +1,38 @@
+<!-- Validation failure messages -->
+<% if @workout.present? %>
+  <% if @workout.errors.any? %>
+    <% @workout.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new workout
+</h1>
+
+
+<hr>
+
+<form action="/create_workout" method="post">
+
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @workout.user_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create workout
+  </button>
+</form>
+
+<hr>
+
+<a href="/workouts">
+  Go back
+</a>
