@@ -20,7 +20,8 @@
       Bodypart
     </label>
 
-    <input type="text" id="bodypart_id" name="bodypart_id" class="form-control">
+    <%= select_tag("bodypart_id", options_from_collection_for_select(Bodypart.all, :id, :name, @exercise.try(:bodypart_id)), :class => "form-control") %>
+    or <a href="/bodyparts/new">add a new bodypart</a> first
   </div>
 
   <button class="btn btn-block btn-outline-secondary">

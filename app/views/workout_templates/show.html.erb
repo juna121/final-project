@@ -1,51 +1,52 @@
 <div class="row mb-3">
-  <div class="col-md-8 offset-md-2">
+  <div class="col">
+
     <h1>
-      Workout #<%= @workout.id %> details
+      Workout <%= @workout.date %> details
     </h1>
 
-    <div class="row mb-3">
-      <div class="col">
-        <a href="/workouts" class="btn btn-block btn-outline-secondary">
-          Go back
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="/workouts/<%= @workout.id %>/edit" class="btn btn-block btn-outline-secondary">
-          Edit workout
-        </a>
-      </div>
-
-      <div class="col">
-        <a href="/delete_workout/<%= @workout.id %>" class="btn btn-block btn-outline-secondary">
-          Delete workout
-        </a>
-      </div>
-    </div>
-
-    <dl>
-      <dt>
-        User
-      </dt>
-      <dd>
-        <%= @workout.user_id %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@workout.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@workout.updated_at) %> ago
-      </dd>
-    </dl>
   </div>
 </div>
 
+
+<div class="row mb-3">
+  <div class="col">
+    <a href="<%= @workout.id %>/circuits/new"  class="btn btn-outline-success">
+      + Create a new circuit
+    </a>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col">
+    <ul class="list-group list-group-flush">
+      <% Circuit.where(workout_id: @workout.id).each do |circuit| %>
+
+        <li class="list-group-item">
+          <a href = "/circuits/<%= circuit.id %>">
+            <%= Exercise.find(circuit.exercise_id).name + " " + circuit.sets.to_s + "x" + circuit.reps.to_s%>
+          </a>
+        </li>
+      <% end %>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <a href="/workouts" class="btn btn-outline-secondary">
+        Go back
+      </a>
+    </div>
+
+    <div class="col justify-content-end"></div>
+    <a href="/delete_workout/<%= @workout.id %>" class="btn btn-outline-danger">
+      Delete workout
+    </a>
+  </div>
+</div>
+</div>
+
+</div>
+</div>

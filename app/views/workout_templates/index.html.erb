@@ -1,66 +1,45 @@
 <div class="row mb-3">
   <div class="col-md-12">
-    <h1>
-      All workouts
-    </h1>
 
-    <a href="/workouts/new" class="btn btn-block btn-outline-secondary">
-      Add a new workout
-    </a>
+    <form action="/create_workout" method="post">
+
+      <div class="form-group">
+        <label for="date">
+          Date
+        </label>
+
+        <input type="date" id="date" name="date" class="form-control">
+      </div>
+
+      <div class="form-group">
+
+        <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%=current_user.id%>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create workout
+      </button>
+    </form>
+
   </div>
 </div>
 
+<h1>
+  All workouts
+</h1>
 
-<hr>
 
-<div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-        <th>
-          ID
-        </th>
+<% @workouts.each do |workout| %>
+  <div class="card">
+    <div class="card-header">
+      <a href= "/workouts/<%=workout.id%>">Workout <%=workout.date%></a>
+    </div>
+    <div class="card-body">
+      <% Circuit.where(workout_id: workout.id).each do |circuit| %>
+        <p><a href = "circuits/<%=circuit.id%>"><%=Exercise.find(circuit.exercise_id).name + " " + circuit.sets.to_s + "x" + circuit.reps.to_s%></a></p>
+      <%end%>
+    </div>
 
-        <th>
-          User
-        </th>
 
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @workouts.each do |workout| %>
-      <tr>
-        <td>
-          <%= workout.id %>
-        </td>
-
-        <td>
-          <%= workout.user_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(workout.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(workout.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/workouts/<%= workout.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
   </div>
-</div>
+<%end%>

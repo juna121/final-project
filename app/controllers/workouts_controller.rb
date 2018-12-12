@@ -21,11 +21,12 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new
 
     @workout.user_id = params.fetch("user_id")
+    @workout.date = params.fetch("date")
 
     if @workout.valid?
       @workout.save
 
-      redirect_back(:fallback_location => "/workouts", :notice => "Workout created successfully.")
+      render("workout_templates/show.html.erb")
     else
       render("workout_templates/new_form_with_errors.html.erb")
     end

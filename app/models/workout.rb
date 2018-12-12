@@ -6,9 +6,13 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  date       :date
 #
 
 class Workout < ApplicationRecord
+  
+  validates :date, presence: true
+  
   belongs_to :user
   has_many :circuits, :dependent => :destroy
 end

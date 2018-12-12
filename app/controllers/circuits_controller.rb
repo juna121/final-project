@@ -12,6 +12,7 @@ class CircuitsController < ApplicationController
   end
 
   def new_form
+    @workout = Workout.find(params.fetch("prefill_with_workout_id"))
     @circuit = Circuit.new
 
     render("circuit_templates/new_form.html.erb")
@@ -31,7 +32,9 @@ class CircuitsController < ApplicationController
     if @circuit.valid?
       @circuit.save
 
-      redirect_back(:fallback_location => "/circuits", :notice => "Circuit created successfully.")
+      # redirect_back(:fallback_location => "/circuits", :notice => "Circuit created successfully.")
+    redirect_to("/workouts/#{@circuit.workout_id}", :notice => "Circuit updated successfully.")
+ 
     else
       render("circuit_templates/new_form_with_errors.html.erb")
     end
