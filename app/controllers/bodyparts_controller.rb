@@ -25,7 +25,7 @@ class BodypartsController < ApplicationController
     if @bodypart.valid?
       @bodypart.save
 
-      redirect_back(:fallback_location => "/bodyparts", :notice => "Bodypart created successfully.")
+      redirect_to("/exercises", :notice => "Bodypart created successfully.")
     else
       render("bodypart_templates/new_form_with_errors.html.erb")
     end
@@ -45,7 +45,7 @@ class BodypartsController < ApplicationController
     if @bodypart.valid?
       @bodypart.save
 
-      redirect_to("/bodyparts/#{@bodypart.id}", :notice => "Bodypart updated successfully.")
+      redirect_to("/exercises", :notice => "Bodypart updated successfully.")
     else
       render("bodypart_templates/edit_form_with_errors.html.erb")
     end
@@ -56,6 +56,6 @@ class BodypartsController < ApplicationController
 
     @bodypart.destroy
 
-    redirect_to("/bodyparts", :notice => "Bodypart deleted successfully.")
+    redirect_to("/exercises", :notice => "Bodypart deleted successfully.")
   end
 end

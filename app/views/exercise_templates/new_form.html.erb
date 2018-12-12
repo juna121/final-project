@@ -7,13 +7,6 @@
 
 <form action="/create_exercise" method="post">
 
-  <div class="form-group">
-    <label for="name">
-      Name
-    </label>
-
-    <input type="text" id="name" name="name" class="form-control">
-  </div>
 
   <div class="form-group">
     <label for="bodypart_id">
@@ -24,8 +17,16 @@
     or <a href="/bodyparts/new">add a new bodypart</a> first
   </div>
 
-  <button class="btn btn-block btn-outline-secondary">
-    Create exercise
+  <div class="form-group">
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" class="form-control">
+  </div>
+
+  <button class="btn btn-outline-success">
+    + Create exercise
   </button>
 </form>
 

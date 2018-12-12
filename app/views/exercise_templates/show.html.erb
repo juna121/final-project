@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
     <h1>
-      Exercise #<%= @exercise.id %> details
+      <%= @exercise.name %> details
     </h1>
 
     <div class="row mb-3">
@@ -26,32 +26,14 @@
 
     <dl>
       <dt>
-        Name
-      </dt>
-      <dd>
-        <%= @exercise.name %>
-      </dd>
-
-      <dt>
         Bodypart
       </dt>
       <dd>
-        <%= @exercise.bodypart_id %>
+        <%= Bodypart.find(@exercise.bodypart_id).name %>
+
       </dd>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@exercise.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@exercise.updated_at) %> ago
-      </dd>
+      
     </dl>
   </div>
 </div>

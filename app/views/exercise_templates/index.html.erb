@@ -1,74 +1,38 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      All exercises
+      Exercise database
     </h1>
 
-    <a href="/exercises/new" class="btn btn-block btn-outline-secondary">
-      Add a new exercise
+    <a href="/bodyparts/new" class="btn btn-outline-success">
+      <i class="fas fa-hand-paper"></i></i> Add a new bodypart
+    </a>
+
+    <a href="/exercises/new" class="btn btn-outline-success">
+      <i class="fas fa-dumbbell"></i> Add a new exercise
     </a>
   </div>
 </div>
 
 
-<hr>
-
-<div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
+<% @bodyparts.each do |bodypart| %>
+  <table class="table">
+    <thead>
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Name
-        </th>
-
-        <th>
-          Bodypart
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
+        <th><%=bodypart.name%>
+        <a href = "/delete_bodypart/<%=bodypart.id%>">Delete bodypart</a></th>
       </tr>
+    </thead>
+    <tbody>
 
-      <% @exercises.each do |exercise| %>
-      <tr>
-        <td>
-          <%= exercise.id %>
-        </td>
+      <% Exercise.where(bodypart_id: bodypart.id).each do |exercise| %>
+        <tr>
+          <td>
+            <a href = "/exercises/<%=exercise.id%>"><%=exercise.name%></a>
+          </td>
+        </tr>
+      <%end%>
 
-        <td>
-          <%= exercise.name %>
-        </td>
-
-        <td>
-          <%= exercise.bodypart_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(exercise.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(exercise.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/exercises/<%= exercise.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
+    </tbody>
+  </table>
+<%end%>

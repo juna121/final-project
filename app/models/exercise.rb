@@ -10,6 +10,10 @@
 #
 
 class Exercise < ApplicationRecord
+  
+  validates :bodypart_id, presence: true
+    validates :name, presence: true
+  
   has_many :circuits, :dependent => :destroy
   belongs_to :bodypart
 end

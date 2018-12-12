@@ -1,6 +1,7 @@
 class ExercisesController < ApplicationController
   def index
     @exercises = Exercise.all
+    @bodyparts = Bodypart.all
 
     render("exercise_templates/index.html.erb")
   end
@@ -26,7 +27,7 @@ class ExercisesController < ApplicationController
     if @exercise.valid?
       @exercise.save
 
-      redirect_back(:fallback_location => "/exercises", :notice => "Exercise created successfully.")
+      redirect_to("/exercises/", :notice => "Exercise created successfully.")
     else
       render("exercise_templates/new_form_with_errors.html.erb")
     end
