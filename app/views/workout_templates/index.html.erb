@@ -29,7 +29,7 @@
 </h1>
 
 
-<% @workouts.each do |workout| %>
+<% @workouts.where(user_id: current_user.id).each do |workout| %>
 
 
   <div class="card">

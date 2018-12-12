@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # Routes for the Circuit resource:
 
   # CREATE
-  get("/workouts/:prefill_with_workout_id/circuits/new", { :controller => "circuits", :action => "new_form" })
+  get("/:prefill_with_workout_id/circuits/new", { :controller => "circuits", :action => "new_form" })
   post("/create_circuit", { :controller => "circuits", :action => "create_row" })
 
   # READ

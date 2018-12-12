@@ -6,12 +6,13 @@
 
 <form action="/update_circuit/<%= @circuit.id %>" method="post">
 
-  <div class="form-group">
-    <label for="workout_id">
-      Workout
-    </label>
 
-    <input type="text" id="workout_id" name="workout_id" class="form-control" value="<%= @circuit.workout_id %>">
+  <div class="form-group">
+    <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%=current_user.id%>">
+  </div>
+
+  <div class="form-group">
+    <input type="hidden" id="workout_id" name="workout_id" class="form-control" value="<%=@circuit.workout_id%>">
   </div>
 
   <div class="form-group">
@@ -19,56 +20,100 @@
       Exercise
     </label>
 
-    <input type="text" id="exercise_id" name="exercise_id" class="form-control" value="<%= @circuit.exercise_id %>">
+    <%= select_tag("exercise_id", options_from_collection_for_select(Exercise.all, :id, :name, @circuit.try(:exercise_id)), :class => "form-control") %>
   </div>
 
-  <div class="form-group">
-    <label for="reps">
-      Reps
-    </label>
+  <div class="row">
+    <div class = "col">
+      <div class="form-group">
+        <label for="sets">
+          Sets
+        </label>
 
-    <input type="text" id="reps" name="reps" class="form-control" value="<%= @circuit.reps %>">
+        <input type="text" id="sets" name="sets" class="form-control" value="<%=@circuit.sets%>">
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="form-group">
+        <label for="reps">
+          Reps
+        </label>
+
+        <input type="text" id="reps" name="reps" class="form-control" value="<%=@circuit.reps%>">
+      </div>
+    </div>
+
   </div>
 
-  <div class="form-group">
-    <label for="sets">
-      Sets
-    </label>
+  <div class="row align-items-end">
+    <div class="col">
+      <div class="form-group">
+        <label for="weight">
+          Weight
+        </label>
 
-    <input type="text" id="sets" name="sets" class="form-control" value="<%= @circuit.sets %>">
-  </div>
+        <input type="text" id="weight" name="weight" class="form-control" value="<%=@circuit.weight%>">
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="weight">
-      Weight
-    </label>
+    <div class="col">
+      <div class="form-group">
 
-    <input type="text" id="weight" name="weight" class="form-control" value="<%= @circuit.weight %>">
-  </div>
+        <div class="form-check form-check-inline">
 
-  <div class="form-group">
-    <label for="unit">
-      Unit
-    </label>
+          <% if (@circuit.unit == "lbs") %>
+            <input class="form-check-input" type="radio" name="unit" id="exampleRadios1" value="lbs" checked>
+          <% else %>
+            <input class="form-check-input" type="radio" name="unit" id="exampleRadios1" value="lbs">
+          <% end %>
+          <label class="form-check-label" for="exampleRadios1">
+            lbs
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
 
-    <input type="text" id="unit" name="unit" class="form-control" value="<%= @circuit.unit %>">
+          <% if (@circuit.unit == "kgs")%>
+            <input class="form-check-input" type="radio" name="unit" id="exampleRadios2" value="kgs" checked>
+          <% else %>
+            <input class="form-check-input" type="radio" name="unit" id="exampleRadios2" value="kgs">
+          <% end %>
+
+          <label class="form-check-label" for="exampleRadios2">
+            kgs
+          </label>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
   <div class="form-group">
     <label for="note">
-      Note
+      Note (Optional)
     </label>
 
-    <input type="text" id="note" name="note" class="form-control" value="<%= @circuit.note %>">
+    <input type="text" id="note" name="note" class="form-control" value="<%=@circuit.note%>">
   </div>
 
-  <button class="btn btn-block btn-outline-secondary">
+  <button class="btn btn-outline-secondary">
     Update circuit
   </button>
+  
+    <a href="/delete_circuit/<%= @circuit.id %>" class="btn btn-outline-danger">
+    Delete circuit
+  </a>
+
+
 </form>
+
+
+
+
 
 <hr>
 
-<a href="/circuits">
+<a href="/workouts/<%=@circuit.workout_id%>">
   Go back
 </a>

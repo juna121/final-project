@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
     <h1>
-      <%= @exercise.name %> details
+      Exercise #<%= @exercise.id %> details
     </h1>
 
     <div class="row mb-3">
@@ -30,9 +30,13 @@
       </dt>
       <dd>
         <%= Bodypart.find(@exercise.bodypart_id).name %>
-
       </dd>
-
+ <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @exercise.name %>
+      </dd>
       
     </dl>
   </div>

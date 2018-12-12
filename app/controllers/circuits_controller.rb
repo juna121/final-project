@@ -59,7 +59,7 @@ class CircuitsController < ApplicationController
     if @circuit.valid?
       @circuit.save
 
-      redirect_to("/circuits/#{@circuit.id}", :notice => "Circuit updated successfully.")
+      redirect_to("/workouts/#{@circuit.workout_id}", :notice => "Circuit updated successfully.")
     else
       render("circuit_templates/edit_form_with_errors.html.erb")
     end

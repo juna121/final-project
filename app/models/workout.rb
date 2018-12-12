@@ -12,6 +12,7 @@
 class Workout < ApplicationRecord
   
   validates :date, presence: true
+  validates :user_id, presence: true
   
   belongs_to :user
   has_many :circuits, :dependent => :destroy
