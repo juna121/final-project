@@ -17,6 +17,13 @@ class CircuitsController < ApplicationController
 
     render("circuit_templates/new_form.html.erb")
   end
+  
+    def new_form_prefilled_exercise
+    @exercise = Exercise.find(params.fetch("prefill_with_exercise_id"))
+
+    render("circuit_templates/new_form_prefilled_exercise.html.erb")
+  end
+
 
   def create_row
     @circuit = Circuit.new

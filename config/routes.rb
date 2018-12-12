@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   # CREATE
   get("/:prefill_with_workout_id/circuits/new", { :controller => "circuits", :action => "new_form" })
   post("/create_circuit", { :controller => "circuits", :action => "create_row" })
+  
+  # CREATE FROM PREFILLED EXERCISE
+  get("/circuits/:prefill_with_exercise_id/new", { :controller => "circuits", :action => "new_form_prefilled_exercise" })
 
   # READ
   get("/circuits", { :controller => "circuits", :action => "index" })
@@ -44,6 +47,9 @@ Rails.application.routes.draw do
   # CREATE
   get("/exercises/new", { :controller => "exercises", :action => "new_form" })
   post("/create_exercise", { :controller => "exercises", :action => "create_row" })
+  
+  # CREATE FROM BODYPART
+  get("/:prefill_with_bodypart_id/exercises/new", { :controller => "exercises", :action => "new_form_prefilled_bodypart" })
 
   # READ
   get("/exercises", { :controller => "exercises", :action => "index" })

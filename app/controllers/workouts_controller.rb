@@ -11,7 +11,7 @@ class WorkoutsController < ApplicationController
     render("workout_templates/show.html.erb")
   end
 
-  def new_form
+    def new_form
     @workout = Workout.new
 
     render("workout_templates/new_form.html.erb")

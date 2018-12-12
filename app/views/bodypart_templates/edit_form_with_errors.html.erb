@@ -22,13 +22,18 @@
     <input type="text" id="name" name="name" class="form-control" value="<%= @bodypart.name %>">
   </div>
 
-  <button class="btn btn-block btn-outline-secondary">
+
+  <button class="btn btn-outline-secondary">
     Update bodypart
   </button>
+
+  <a href="/delete_bodypart/<%= @bodypart.id %>" class="btn btn-outline-danger">
+      Delete bodypart
+  </a>
 </form>
 
 <hr>
 
-<a href="/bodyparts">
+<a href="/exercises">
   Go back
 </a>

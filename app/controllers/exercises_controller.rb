@@ -18,6 +18,13 @@ class ExercisesController < ApplicationController
     render("exercise_templates/new_form.html.erb")
   end
 
+  def new_form_prefilled_bodypart
+    @exercise = Exercise.new
+    @bodypart = Bodypart.find(params.fetch("prefill_with_bodypart_id"))
+
+    render("exercise_templates/new_form_prefilled_bodypart.html.erb")
+  end
+
   def create_row
     @exercise = Exercise.new
 

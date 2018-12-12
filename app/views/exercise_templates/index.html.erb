@@ -6,21 +6,26 @@
 
     <a href="/bodyparts/new" class="btn btn-outline-success">
       <i class="fas fa-hand-paper"></i></i> Add a new bodypart
-    </a>
+  </a>
 
-    <a href="/exercises/new" class="btn btn-outline-success">
-      <i class="fas fa-dumbbell"></i> Add a new exercise
-    </a>
-  </div>
+  <a href="/exercises/new" class="btn btn-outline-success">
+    <i class="fas fa-dumbbell"></i> Add a new exercise
+  </a>
+</div>
 </div>
 
 
 <% @bodyparts.each do |bodypart| %>
   <table class="table">
-    <thead>
+    <thead class="thead-light">
       <tr>
-        <th><%=bodypart.name%>
-        <a href = "/delete_bodypart/<%=bodypart.id%>">Delete bodypart</a></th>
+        <th>
+          <%=bodypart.name%>
+        </th>
+        <th class="text-right">
+          <a href = "/bodyparts/<%=bodypart.id%>/edit">Edit</a>
+        </th>
+
       </tr>
     </thead>
     <tbody>
@@ -28,10 +33,20 @@
       <% Exercise.where(bodypart_id: bodypart.id).each do |exercise| %>
         <tr>
           <td>
-            <a href = "/exercises/<%=exercise.id%>"><%=exercise.name%></a>
+            <%=exercise.name%>
+          </td>
+          <td class = "text-right">
+            <a href = "https://workout-planner-final-project-juna121.c9users.io/circuits/<%=exercise.id%>/new">[Add to workout]</a>
+            <a href = "/exercises/<%=exercise.id%>/edit">[Edit exercise]</a>
           </td>
         </tr>
       <%end%>
+      
+      <tr>
+        <td>
+          <a href = "https://workout-planner-final-project-juna121.c9users.io/<%=bodypart.id%>/exercises/new">+ Add a new exercise to this bodypart</a>
+        </td>
+      </tr>
 
     </tbody>
   </table>
