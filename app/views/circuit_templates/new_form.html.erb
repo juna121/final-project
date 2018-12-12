@@ -86,13 +86,13 @@
     <input type="text" id="note" name="note" class="form-control">
   </div>
 
-  <button class="btn btn-block btn-outline-secondary">
-    Create circuit
+  <button class="btn btn-outline-success">
+    + Create circuit
   </button>
 </form>
 
 <hr>
 
-<a href="/circuits">
+<a href="/workouts/<%= @workout.id %>" class="btn btn-outline-secondary">
   Go back
 </a>

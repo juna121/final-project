@@ -32,7 +32,6 @@ class CircuitsController < ApplicationController
     if @circuit.valid?
       @circuit.save
 
-      # redirect_back(:fallback_location => "/circuits", :notice => "Circuit created successfully.")
     redirect_to("/workouts/#{@circuit.workout_id}", :notice => "Circuit updated successfully.")
  
     else
@@ -67,10 +66,11 @@ class CircuitsController < ApplicationController
   end
 
   def destroy_row
+    
     @circuit = Circuit.find(params.fetch("id_to_remove"))
-
+    @workout = Workout.find(Circuit.find(params.fetch("id_to_remove")).workout_id)
+    
     @circuit.destroy
-
-    redirect_to("/circuits", :notice => "Circuit deleted successfully.")
+    redirect_to("/workouts/#{@workout.id}", :notice => "Circuit deleted successfully.")
   end
 end
