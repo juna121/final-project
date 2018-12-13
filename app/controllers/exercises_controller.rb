@@ -55,7 +55,7 @@ class ExercisesController < ApplicationController
     if @exercise.valid?
       @exercise.save
 
-      redirect_to("/exercises/#{@exercise.id}", :notice => "Exercise updated successfully.")
+      redirect_to("/exercises/", :notice => "Exercise updated successfully.")
     else
       render("exercise_templates/edit_form_with_errors.html.erb")
     end

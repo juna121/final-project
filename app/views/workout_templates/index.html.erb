@@ -29,27 +29,27 @@
 </h1>
 
 
-<% @workouts.where(user_id: current_user.id).each do |workout| %>
+<% @workouts.where(user_id: current_user.id).sort{|b,a| a.date <=> b.date}.each do |workout| %>
 
 
   <div class="card">
     <div class="card-header">
       <a href= "/workouts/<%=workout.id%>">Workout <%=workout.date%></a>
-      <a href = "/delete_workout/<%=workout.id%>" class = "text-danger"><i class="far fa-trash-alt"></i></a>
-    </div>
+    <a href = "/delete_workout/<%=workout.id%>" class = "text-danger"><i class="far fa-trash-alt"></i></a>
+  </div>
 
-    <div class="card-body">
-      <% Circuit.where(workout_id: workout.id).each do |circuit| %>
+  <div class="card-body">
+    <% Circuit.where(workout_id: workout.id).each do |circuit| %>
 
-        <div>
-          <% if circuit.reps.present? %>
-            <%=Exercise.find(circuit.exercise_id).name + " " + circuit.sets.to_s + "x" + circuit.reps.to_s%>
-          <% else %>
-            <%=Exercise.find(circuit.exercise_id).name%>
-          <% end %>
-        </div>
+      <div>
+        <% if circuit.reps.present? %>
+          <%=Exercise.find(circuit.exercise_id).name + " " + circuit.sets.to_s + "x" + circuit.reps.to_s%>
+        <% else %>
+          <%=Exercise.find(circuit.exercise_id).name%>
+        <% end %>
+      </div>
 
-      <% end %>
+    <% end %>
 
-    </div>
-  <% end %>
+  </div>
+<% end %>

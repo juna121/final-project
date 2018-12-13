@@ -1,7 +1,11 @@
 <h1>
   Add a new circuit
+
 </h1>
 
+<p>
+    <%=@exercise.name%>
+</p>
 
 <hr>
 
@@ -16,7 +20,8 @@
       Workout
     </label>
 
-    <%= select_tag("workout_id", options_from_collection_for_select(Workout.all.where(user_id: current_user.id), :id, :date, @circuit.try(:workout_id)), :class => "form-control") %>
+    <%= select_tag("workout_id", options_from_collection_for_select(Workout.all.where(user_id: current_user.id).sort{|b,a| a.date <=> b.date}, :id, :date, @circuit.try(:workout_id)), :class => "form-control") %>
+    or <a href="/workouts/new">add a new workout</a> first
   </div>
 
   <div class="form-group">

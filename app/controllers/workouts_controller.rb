@@ -46,7 +46,7 @@ class WorkoutsController < ApplicationController
     if @workout.valid?
       @workout.save
 
-      redirect_to("/workouts/#{@workout.id}", :notice => "Workout updated successfully.")
+      redirect_to("/workouts/", :notice => "Workout updated successfully.")
     else
       render("workout_templates/edit_form_with_errors.html.erb")
     end

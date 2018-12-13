@@ -21,7 +21,8 @@
     </label>
 
 
-    <%= select_tag("exercise_id", options_from_collection_for_select(Exercise.all, :id, :name, @circuit.try(:exercise_id)), :class => "form-control") %>
+    <%= select_tag("exercise_id", options_from_collection_for_select(Exercise.all.sort {|a,b| a.bodypart_id <=> b.bodypart_id}, :id, :name, @circuit.try(:exercise_id)), :class => "form-control") %>
+    
   </div>
 
   <div class="row">
